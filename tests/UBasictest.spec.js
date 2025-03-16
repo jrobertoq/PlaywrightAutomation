@@ -24,7 +24,10 @@ test.only('First Playwright test', async ({ browser }) => {
     await userName.fill('rahulshettyacademy');
     await signInButton.click();
 
-    console.log(await page.locator('.card-body a').nth(0).textContent());
+    console.log(await cardTitles.nth(0).textContent());
+
+    const cardTitlesText = await cardTitles.allTextContents();
+    console.log(cardTitlesText);
 });
 
 test('Page Playwright test', async ({ page }) => {
