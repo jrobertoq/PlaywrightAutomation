@@ -7,4 +7,11 @@ test('Page Playwright test', async ({ page }) => {
     await page.locator('#userPassword').fill('2Hidroxil@');
     await page.locator('[value="Login"]').click();
 
+    //await page.waitForLoadState('networkidle');
+
+    await page.locator('.card-body b').first().waitFor();
+
+    const titles = await page.locator('.card-body b').allTextContents();
+    console.log(titles);
+
 });

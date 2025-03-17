@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { sign } from 'crypto';
 
-test.only('First Playwright test', async ({ browser }) => {
+test('First Playwright test', async ({ browser }) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
@@ -35,4 +35,16 @@ test('Page Playwright test', async ({ page }) => {
     console.log(await page.title());
 
     await expect(page).toHaveTitle(/Google/);
+});
+
+test.only('UI Controls', async ({ page }) => {
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+    const userName = page.locator('#username');
+    const signInButton = page.locator('#signInBtn');
+    const dropdown = page.locator('select.form-control');
+
+    await dropdown.selectOption('consult');
+
+    await page.pause();
+
 });
