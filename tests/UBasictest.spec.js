@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { sign } from 'crypto';
 
 test('First Playwright test', async ({ browser }) => {
     const context = await browser.newContext();
@@ -42,9 +41,21 @@ test.only('UI Controls', async ({ page }) => {
     const userName = page.locator('#username');
     const signInButton = page.locator('#signInBtn');
     const dropdown = page.locator('select.form-control');
+    const userRadioBtn = page.locator('.radiotextsty');
+    const termsCheckbox = page.locator('#terms');
 
     await dropdown.selectOption('consult');
 
-    await page.pause();
+    await userRadioBtn.last().click();
+    await page.locator('#okayBtn').click();
 
+    await expect(userRadioBtn.last()).toBeChecked();
+    console.log(await userRadioBtn.last().isChecked());
+
+    await termsCheckbox.click();
+    await expect(termsCheckbox).toBeChecked();
+    await termsCheckbox.uncheck();
+
+    await expect((termsCheckbox)).not.toBeChecked();
+    expect(await termsCheckbox.isChecked()).toBeFalsy();
 });
