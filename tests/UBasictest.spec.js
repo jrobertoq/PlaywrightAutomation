@@ -43,7 +43,8 @@ test.only('UI Controls', async ({ page }) => {
     const dropdown = page.locator('select.form-control');
     const userRadioBtn = page.locator('.radiotextsty');
     const termsCheckbox = page.locator('#terms');
-
+    const documentsLink = page.locator("[href*='documents-request']")
+    
     await dropdown.selectOption('consult');
 
     await userRadioBtn.last().click();
@@ -58,4 +59,6 @@ test.only('UI Controls', async ({ page }) => {
 
     await expect((termsCheckbox)).not.toBeChecked();
     expect(await termsCheckbox.isChecked()).toBeFalsy();
+
+    await expect(documentsLink).toHaveAttribute('class', 'blinkingText');
 });
