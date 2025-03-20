@@ -4,8 +4,9 @@ import { expect, test } from '@playwright/test';
 test('Client App Login', async ({ page }) => {
     const productName = "ZARA COAT 3";
     const products = page.locator('.card-body');
+    const userEmail= "joserobertoq@outlook.com"
     await page.goto("https://rahulshettyacademy.com/client");
-    await page.locator('#userEmail').fill('joserobertoq@outlook.com');
+    await page.locator('#userEmail').fill(userEmail);
     await page.locator('#userPassword').fill('2Hidroxil@');
     await page.locator('[value="Login"]').click();
 
@@ -45,12 +46,20 @@ test('Client App Login', async ({ page }) => {
 
     for (let i = 0; i < optionsCount; i++) {
         const text = await dropdown.locator("button").nth(i).textContent();
-        
+
         if (text === " India") {
             await dropdown.locator("button").nth(i).click();
             break;
         }
     }
 
-    await page.pause();
+    await expect(page.locator(".user__name label[type='text']")).toHaveText(userEmail);
+
+    await page.locator(".action__submit").click();
+
+    await expect(page.locator(".hero-primary")).toHaveText("Thankyou for the order.");
+
+    const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
+    console.log(orderId);
+
 });
