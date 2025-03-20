@@ -60,6 +60,5 @@ test('Client App Login', async ({ page }) => {
     await expect(page.locator(".hero-primary")).toHaveText("Thankyou for the order.");
 
     const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
-    console.log(orderId);
 
 });
