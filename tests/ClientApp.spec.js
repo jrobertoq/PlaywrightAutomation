@@ -61,4 +61,7 @@ test('Client App Login', async ({ page }) => {
 
     const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
 
+    await page.locator("[routerlink*='myorders']").click();
+
+
 });
