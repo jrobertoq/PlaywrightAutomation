@@ -13,7 +13,6 @@ test.beforeAll( async() => {
     expect(loginResponse.ok()).toBeTruthy();
 
     const responseBody = await loginResponse.json();
-    console.log(responseBody);
     token = responseBody.token;
     console.log(token);
 });
@@ -28,7 +27,7 @@ test('Client App Login', async ({ page }) => {
     const userEmail= "joserobertoq@outlook.com"
 
     await page.goto("https://rahulshettyacademy.com/client");
-        
+
     const products = page.locator('.card-body');
 
     await page.locator('.card-body b').first().waitFor();
