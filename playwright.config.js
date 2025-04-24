@@ -35,7 +35,9 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
-    screenshot: 'on'
+    screenshot: 'on',
+    headless: false,
+    browserName: 'chromium',
   },
 
   /* Configure projects for major browsers */
