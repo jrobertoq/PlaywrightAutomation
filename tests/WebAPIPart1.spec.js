@@ -2,7 +2,7 @@ import { expect, test, request } from '@playwright/test';
 import { APIUtils } from './utils/APIUtils.js';
 
 const loginPayload = {userEmail: "joserobertoq@outlook.com", userPassword: "2Hidroxil@"}
-const orderPayload = {orders: [{country: "India", productOrderedId: "67a8dde5c0d3e6622a297cc8"}]}
+const orderPayload = {orders: [{country: "India", productOrderedId: "68a961459320a140fe1ca57a"}]}
 let response;
 
 test.beforeAll( async() => {
